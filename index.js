@@ -105,8 +105,17 @@ app.patch("/api/employees/:id", async (req, res) => {
 app.delete("/api/employees/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    const employeeId = parseInt(id);
+
+    // Prevent deletion of employees with ID 1-7
+    if (employeeId >= 1 && employeeId <= 7) {
+      return res
+        .status(403)
+        .json({ message: "Deletion of employees with ID 1-7 is not allowed" });
+    }
+
     await prisma.employee.delete({
-      where: { id: parseInt(id) },
+      where: { id: employeeId },
     });
 
     res.status(200).json({ message: "Employee deleted successfully." });
