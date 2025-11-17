@@ -5,7 +5,7 @@ A RESTful API for managing employee data, built with Express.js and Prisma, usin
 ## Base URL
 
 - Local: `http://localhost:3000`
-- Production: `https://api.afif.dev`
+- Production: `https://example.afif.dev`
 
 ## Endpoints
 
@@ -32,7 +32,7 @@ Retrieves a list of all employees.
 **Example:**
 
 ```bash
-curl https://api.afif.dev/api/employees
+curl https://example.afif.dev/api/employees
 ```
 
 ### 2. Get Employee by ID
@@ -67,7 +67,7 @@ Retrieves a single employee by their ID.
 **Example:**
 
 ```bash
-curl https://api.afif.dev/api/employees/1
+curl https://example.afif.dev/api/employees/1
 ```
 
 ### 3. Create New Employee
@@ -108,7 +108,7 @@ Creates a new employee.
 **Example:**
 
 ```bash
-curl -X POST https://api.afif.dev/api/employees \
+curl -X POST https://example.afif.dev/api/employees \
   -H "Content-Type: application/json" \
   -d '{"name": "Jane Smith", "salary": 60000, "age": 25}'
 ```
@@ -153,7 +153,7 @@ Updates an existing employee's details. Only provided fields are updated.
 **Example:**
 
 ```bash
-curl -X PATCH https://api.afif.dev/api/employees/1 \
+curl -X PATCH https://example.afif.dev/api/employees/1 \
   -H "Content-Type: application/json" \
   -d '{"salary": 70000}'
 ```
@@ -187,7 +187,7 @@ Deletes an employee by their ID.
 **Example:**
 
 ```bash
-curl -X DELETE https://api.afif.dev/api/employees/1
+curl -X DELETE https://example.afif.dev/api/employees/1
 ```
 
 ## Error Handling

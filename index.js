@@ -129,6 +129,57 @@ app.delete("/api/employees/:id", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  const apiDocs = {
+    name: "Employee API",
+    version: "1.0.0",
+    description: "REST API for managing employees",
+    endpoints: {
+      "POST /api/employees": {
+        description: "Create a new employee",
+        body: {
+          name: "string (required)",
+          salary: "number (required)",
+          age: "number (required)",
+        },
+      },
+      "GET /api/employees": {
+        description: "Get all employees",
+        response: "Array of employee objects",
+      },
+      "GET /api/employees/:id": {
+        description: "Get employee by ID",
+        parameters: {
+          id: "number (employee ID)",
+        },
+        response: "Employee object or 404 if not found",
+      },
+      "PATCH /api/employees/:id": {
+        description: "Update employee by ID",
+        parameters: {
+          id: "number (employee ID)",
+        },
+        body: {
+          name: "string (optional)",
+          salary: "number (optional)",
+          age: "number (optional)",
+        },
+        response: "Updated employee object",
+      },
+      "DELETE /api/employees/:id": {
+        description: "Delete employee by ID (IDs 1-7 are protected)",
+        parameters: {
+          id: "number (employee ID)",
+        },
+        response: "Success message or 403 if ID 1-7",
+      },
+    },
+  };
+
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json(apiDocs);
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
